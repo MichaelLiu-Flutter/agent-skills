@@ -1,0 +1,4 @@
+interface:
+  display_name: "代码设计规范"
+  short_description: "按实际问题检查职责、依赖和设计模式，改善代码并防止过度设计"
+  default_prompt: "使用 $code-design 检查当前代码的职责与依赖，按实际问题选择设计原则和模式，并完成请求范围内的改进与验证。"
