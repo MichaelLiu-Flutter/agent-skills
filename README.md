@@ -1,6 +1,6 @@
 # Agent Skills
 
-可复用的 AI 编程技能。当前包含 `code-design`（代码设计规范），用于设计方案、职责划分、结构审查和范围明确的重构。
+可复用的 AI 编程技能。当前包含 `code-design`（代码设计规范）和 `merge-branches`（Git 分支合并）。
 
 ## 安装
 
@@ -8,6 +8,7 @@
 
 ```bash
 npx skills add MichaelLiu-Flutter/agent-skills --skill code-design
+npx skills add MichaelLiu-Flutter/agent-skills --skill merge-branches
 ```
 
 安装工具支持 Codex、Claude Code、Cursor 等工具；具体兼容性以 [skills CLI](https://github.com/vercel-labs/skills) 当前说明为准。安装后检查目标工具是否识别技能；必要时重新打开会话。
@@ -45,9 +46,26 @@ Codex 中可以通过 `$code-design` 明确调用：
 
 其他工具的调用语法可能不同，请使用各自的技能入口。
 
+## merge-branches 能做什么
+
+- 明确源分支和目标分支，检查提交关系和工作区状态。
+- 根据分支关系选择快进或普通合并，逐文件处理冲突。
+- 保护未提交改动，禁止用强推、清空工作区等方式绕过问题。
+- 完成相关验证，并报告合并结果、冲突处理和未验证风险。
+
+Codex 中可以通过 `$merge-branches` 明确调用，例如：
+
+```text
+使用 $merge-branches，把 feature/login 合并到 develop。
+先检查工作区和分支关系，处理冲突后运行相关检查。
+```
+
+未说明源分支或目标分支时，技能会先询问。推送、删除分支和改写历史需要单独授权。
+
 ## 内容
 
-- [技能入口](skills/code-design/SKILL.md)
+- [分支合并技能入口](skills/merge-branches/SKILL.md)
+- [代码设计技能入口](skills/code-design/SKILL.md)
 - [设计目标与原则](skills/code-design/references/goals-and-principles.md)
 - [设计模式决策](skills/code-design/references/pattern-decisions.md)
 - [工作流程与验证](skills/code-design/references/workflow-and-validation.md)
@@ -57,6 +75,7 @@ Codex 中可以通过 `$code-design` 明确调用：
 
 ```bash
 npx skills update code-design
+npx skills update merge-branches
 ```
 
 ## 当前验证范围

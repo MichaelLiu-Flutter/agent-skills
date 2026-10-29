@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merge Branches"
+  short_description: "Safely merge Git branches with conflict checks"
+  default_prompt: "Use $merge-branches to safely merge a source branch into a target branch and verify the result."
